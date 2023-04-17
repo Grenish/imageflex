@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ImageFlex</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="assets/favicon2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon2.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
   </head>
+
   <body>
     <div class="w-full h-auto image">
       <div class="bg-[#1d1e186f]">
@@ -31,7 +33,7 @@
               <img src="assets/search.svg" alt="" class="w-[30px] p-1 m-1" />
               <input
                 type="text"
-                class="py-3 w-[560px] outline-none rounded-xl"
+                class="searchbox py-3 w-[560px] outline-none rounded-xl"
                 placeholder="City, Animals, Landscape, etc"
               />
             </div>
@@ -40,75 +42,76 @@
       </div>
     </div>
 
-    <div className="w-full h-auto bg-[#fff]">
-      <section className="w-[90%] m-auto gallery">
-        <ul className="images my-5" id="images">
-          <li className="card" key="{index}">
-            <img src="assets/placeholder.jpg" alt="Something great" />
-            <div className="rel-box">
-              <div className="detail-main">
-                <div className="details">
-                  <div className="profile">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-camera2"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M5 8c0-1.657 2.343-3 4-3V4a4 4 0 0 0-4 4z" />
-                      <path
-                        d="M12.318 3h2.015C15.253 3 16 3.746 16 4.667v6.666c0 .92-.746 1.667-1.667 1.667h-2.015A5.97 5.97 0 0 1 9 14a5.972 5.972 0 0 1-3.318-1H1.667C.747 13 0 12.254 0 11.333V4.667C0 3.747.746 3 1.667 3H2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1h.682A5.97 5.97 0 0 1 9 2c1.227 0 2.367.368 3.318 1zM2 4.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM14 8A5 5 0 1 0 4 8a5 5 0 0 0 10 0z"
-                      />
-                    </svg>
-                    <span>John Doe</span>
-                  </div>
-                  <div className="download">
-                    <button className="download-btn" id="download-btn">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="15"
-                        height="15"
-                        fill="currentColor"
-                        className="bi bi-download"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
-                        />
-                        <path
-                          d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div className="expand">
-                  <button className="expand-btn" id="expand-btn">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15"
-                      height="15"
-                      fill="currentColor"
-                      className="bi bi-arrows-angle-expand"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+    <div class="w-full h-auto bg-[#fff]">
+      <section class="pop-box">
+        <div class="wrapper">
+          <div class="credits">
+            <button id="close-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                />
+              </svg>
+            </button>
+
+            <div class="person-profile">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  fillRule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                />
+              </svg>
+              <span></span>
             </div>
-          </li>
-        </ul>
+
+            <button class="opened-download-btn download-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-download"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                />
+                <path
+                  d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="opened-picture">
+            <img src="" alt="Image" />
+          </div>
+        </div>
       </section>
 
-      <section className="w-full flex justify-center my-10">
-        <button className="load-more p-3 rounded-md">Load more</button>
+      <section class="w-[90%] m-auto gallery">
+        <ul class="images my-5" id="images"></ul>
+      </section>
+
+      <section class="w-full flex justify-center my-10">
+        <button class="loadMore p-3 bg-[#B9F5D8] rounded-md" id="load-more">
+          Load more
+        </button>
       </section>
     </div>
   </body>

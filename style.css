@@ -78,8 +78,7 @@ body {
 }
 
 .expand {
-  position: absolute;
-  bottom: 300px;
+  position: relative;
   right: 15px;
   color: #fff;
 }
@@ -101,6 +100,10 @@ body {
   z-index: 999;
   justify-content: center;
   align-items: center;
+}
+
+.pop-box.show{
+  display: flex;
 }
 
 .wrapper {
@@ -154,6 +157,7 @@ body {
   }
 }
 
-.load-more{
-  background: #B9F5D8;
+.loadMore.disabled{
+  opacity: 0.6;
+  pointer-events: none;
 }
